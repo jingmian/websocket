@@ -283,7 +283,8 @@ class WebSocket {
                 $response['content'] = $msg_content;
                 break;
         }
-
+//记录发送的信息
+        file_put_contents(self::LOG_PATH . 'websocket_debug.log',  json_encode($response,JSON_UNESCAPED_UNICODE) . "\r\n", FILE_APPEND);
         return $this->build(json_encode($response));
     }
 
